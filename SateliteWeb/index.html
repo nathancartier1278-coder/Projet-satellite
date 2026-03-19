@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Satellite - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Système de mesure par satellite</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="details.html">Détails Techniques (IHM)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Surveillance des Ressources en Eau</h1>
+        <p>Mission : Connaître le cycle de l'eau et son évolution dans le temps.</p>
+    </section>
+
+    <main>
+        <div style="text-align: center; margin-top: 40px;">
+            <h2>Télémesure en Direct (Prototype)</h2>
+            <p style="color: #666;">Cliquez sur une carte pour plus de détails</p>
+        </div>
+
+        <section class="dashboard-container">
+            <div class="cards-wrapper">
+                <div class="data-card water" onclick="showInfo('water')">
+                    <div class="icon">📏</div>
+                    <h3>Hauteur d'eau</h3>
+                    <div class="value">1.00 m</div>
+                    <p class="status">Réf. Prototype</p>
+                </div>
+                <div class="data-card ice" onclick="showInfo('precision')">
+                    <div class="icon">🎯</div>
+                    <h3>Précision</h3>
+                    <div class="value">0.5 %</div>
+                    <p class="status">Seuil requis</p>
+                </div>
+                <div class="data-card heat" onclick="showInfo('temp')">
+                    <div class="icon">🌡️</div>
+                    <h3>Température</h3>
+                    <div class="value">Stable</div>
+                    <p class="status">Protection active</p>
+                </div>
+            </div>
+
+            <div id="info-display" class="info-box" style="display: none;">
+                <h4 id="info-title"></h4>
+                <p id="info-text"></p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Présentation du Projet</h2>
+                <p>L'eau douce se raréfie sous l'effet du changement climatique. Le système doit mesurer la hauteur des lacs et envoyer les informations au centre de mission.</p>
+                <div class="liens">
+                    <a href="#" class="btn-download">📄 Dossier Technique (UAI: 0312093G)</a>
+                </div>
+            </div>
+            <div class="image-content">
+                <model-viewer 
+                    src="satellite.glb.glb" 
+                    alt="Maquette 3D Satellite" 
+                    auto-rotate 
+                    camera-controls 
+                    exposure="0.6"
+                    class="maquette-3d">
+                </model-viewer>
+                <p class="caption">Modèle : Plate-forme et Charge utile</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Réalisé par : Cartier Nathan, Louca Martinez, Mattheo Joulan, Charles Saint-Martin et Doryan Breugnot-ca</p>
+    </footer>
+
+    <script>
+        function showInfo(type) {
+            const display = document.getElementById('info-display');
+            const title = document.getElementById('info-title');
+            const text = document.getElementById('info-text');
+            display.style.display = "block";
+            
+            if(type === 'water') {
+                title.innerText = "Mesure de Hauteur";
+                text.innerText = "La hauteur de référence entre la surface de l'eau et le bas du satellite est de 1m pour le prototype.";
+            } else if(type === 'precision') {
+                title.innerText = "Exigence de Précision";
+                text.innerText = "La précision des mesures devra être de 0,5%.";
+            } else if(type === 'temp') {
+                title.innerText = "Protection Thermique";
+                text.innerText = "La charge utile devra résister aux variations de températures grâce à un système de maintien en température.";
+            }
+            display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

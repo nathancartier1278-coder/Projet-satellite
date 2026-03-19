@@ -1,0 +1,269 @@
+/* --- IMPORTATION DES POLICES --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* --- VARIABLES DE COULEURS ET DESIGN --- */
+:root {
+    --primary-color: #0f3460;   /* Bleu nuit (Espace/Sérieux) */
+    --accent-color: #e94560;    /* Rouge/Rose (Alertes/Action) */
+    --secondary-color: #16213e; /* Bleu foncé */
+    --light-bg: #f5f6fa;       /* Gris très clair pour le fond */
+    --card-bg: #ffffff;        /* Blanc pour les cartes */
+    --text-color: #333333;
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- RÉINITIALISATION DE BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- BARRE DE NAVIGATION (HEADER) --- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size: 1.1em;
+    font-weight: 700;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav a {
+    color: #cfd8dc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+nav a:hover, nav a.active {
+    color: white;
+}
+
+nav a.active {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+}
+
+/* --- SECTION HERO (BANNIÈRE) --- */
+.hero {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* --- SYSTÈME DE CARTES / "BULLES" --- */
+.dashboard-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.data-card {
+    background-color: var(--card-bg);
+    padding: 35px 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    border-top: 5px solid var(--primary-color);
+    transition: var(--transition);
+    cursor: pointer; /* Pour indiquer que c'est cliquable */
+}
+
+/* Animation au survol (pas de flou) */
+.data-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Couleurs spécifiques aux types de données */
+.data-card.water { border-top-color: #3498db; } /* Bleu */
+.data-card.ice { border-top-color: #00cec9; }   /* Turquoise */
+.data-card.heat { border-top-color: var(--accent-color); } /* Rouge */
+
+.data-card .icon {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.data-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.data-card .value {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.status {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* --- ZONE D'INFORMATION DYNAMIQUE (AU CLIC) --- */
+.info-box {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info-box h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* --- SECTION DE CONTENU (TEXTE + 3D) --- */
+.content-section {
+    display: flex;
+    background-color: white;
+    padding: 50px;
+    max-width: 1100px;
+    margin: 40px auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    align-items: center;
+    gap: 50px;
+}
+
+.text-content {
+    flex: 1.2;
+}
+
+.text-content h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.text-content ul {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.image-content {
+    flex: 1.5;
+    text-align: center;
+}
+
+/* --- LECTEUR MAQUETTE 3D --- */
+.maquette-3d {
+    width: 100%;
+    height: 450px;
+    background-color: #ffffff; /* Fond blanc pur */
+    border-radius: 20px;
+    border: 1px solid #eeeeee;
+    outline: none;
+}
+
+.caption {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* --- BOUTONS --- */
+.btn-download {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 25px;
+    transition: var(--transition);
+}
+
+.btn-download:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* --- PIED DE PAGE --- */
+footer {
+    background-color: var(--secondary-color);
+    color: #bdc3c7;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    font-size: 0.9em;
+}
+
+/* --- ADAPTATION MOBILE (RESPONSIVE) --- */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+        padding: 30px;
+    }
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 15px;
+    }
+}
