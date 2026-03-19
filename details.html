@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Techniques - IHM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Système de mesure par satellite</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="details.html" class="active">Détails Techniques (IHM)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Interface Homme-Machine (IHM)</h1>
+        <p>Affichage des résultats et téléopération du système.</p>
+    </section>
+
+    <main>
+        <div style="text-align: center; margin-top: 40px;">
+            <h2>Configuration des Seuils d'Alerte</h2>
+            <p style="color: #666;">Cliquez sur les bulles pour voir les paramètres de mission</p>
+        </div>
+
+        <section class="dashboard-container">
+            <div class="cards-wrapper">
+                <div class="data-card water" onclick="showTechInfo('seuil_pos')">
+                    <div class="icon">🚨</div>
+                    <h3>Seuil Haut</h3>
+                    <div class="value">+3 cm</div>
+                    <p class="status">Alerte positive</p>
+                </div>
+                <div class="data-card ice" onclick="showTechInfo('seuil_neg')">
+                    <div class="icon">🚨</div>
+                    <h3>Seuil Bas</h3>
+                    <div class="value">-5 cm</div>
+                    <p class="status">Alerte négative</p>
+                </div>
+                <div class="data-card heat" onclick="showTechInfo('sauvegarde')">
+                    <div class="icon">💾</div>
+                    <h3>Sauvegarde</h3>
+                    <div class="value">Active</div>
+                    <p class="status">Stockage interne</p>
+                </div>
+            </div>
+
+            <div id="tech-info-display" class="info-box" style="display: none;">
+                <h4 id="tech-title"></h4>
+                <p id="tech-text"></p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Missions de l'équipe SIN</h2>
+                <ul>
+                    <li>Acquérir et envoyer les données au centre de mission.</li>
+                    <li>Traiter les données et assurer leur affichage ergonomique.</li>
+                    <li>Définir les seuils déclenchant l'envoi d'une alerte.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Effectif équipe : 5 élèves | Session 2026</p>
+    </footer>
+
+    <script>
+        function showTechInfo(type) {
+            const display = document.getElementById('tech-info-display');
+            const title = document.getElementById('tech-title');
+            const text = document.getElementById('tech-text');
+            display.style.display = "block";
+            
+            if(type === 'seuil_pos') {
+                title.innerText = "Alerte Seuil Haut";
+                text.innerText = "Les seuils d'alertes correspondent à +3cm par rapport au niveau de référence.";
+            } else if(type === 'seuil_neg') {
+                title.innerText = "Alerte Seuil Bas";
+                text.innerText = "Une alerte est déclenchée si le niveau descend à -5cm par rapport au niveau de référence.";
+            } else if(type === 'sauvegarde') {
+                title.innerText = "Sauvegarde des données";
+                text.innerText = "Les valeurs mesurées devront être sauvegardées pour permettre de suivre les ressources sur la durée.";
+            }
+            display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
