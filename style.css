@@ -1,0 +1,150 @@
+/* --- IMPORTATION DES POLICES --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* --- VARIABLES --- */
+:root {
+    --primary-color: #0f3460;
+    --accent-color: #e94560;
+    --secondary-color: #16213e;
+    --light-bg: #f5f6fa;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Roboto', sans-serif; background-color: var(--light-bg); color: var(--text-color); line-height: 1.6; }
+h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+
+/* --- HEADER --- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo { font-size: 1.1em; font-weight: 700; border-left: 3px solid var(--accent-color); padding-left: 15px; }
+nav ul { list-style: none; display: flex; }
+nav ul li { margin-left: 25px; }
+nav a { color: #cfd8dc; text-decoration: none; font-weight: 500; transition: var(--transition); }
+nav a:hover, nav a.active { color: white; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; }
+
+/* --- HERO --- */
+.hero {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.hero h1 { font-size: 2.5em; margin-bottom: 10px; }
+
+/* --- CARTES --- */
+.dashboard-container { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+.cards-wrapper { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+.data-card {
+    background-color: var(--card-bg);
+    padding: 35px 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    border-top: 5px solid var(--primary-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+.data-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+.data-card.water { border-top-color: #3498db; }
+.data-card.ice { border-top-color: #00cec9; }
+.data-card.heat { border-top-color: var(--accent-color); }
+.data-card .icon { font-size: 3.5em; margin-bottom: 15px; display: block; }
+.data-card .value { font-size: 2.2em; font-weight: 700; color: var(--primary-color); }
+.status { font-size: 0.9em; color: #777; margin-top: 10px; }
+
+/* --- MODAL (BULLE TECHNIQUE) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 70%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: fadeIn 0.4s ease forwards;
+}
+.close { position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa; }
+.close:hover { color: var(--accent-color); }
+.modal-body h3 { color: var(--primary-color); margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+.modal-body ul { margin-top: 10px; margin-left: 20px; }
+
+/* --- CONTENU --- */
+.content-section {
+    display: flex;
+    background-color: white;
+    padding: 50px;
+    max-width: 1100px;
+    margin: 40px auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    align-items: center;
+    gap: 50px;
+}
+.text-content { flex: 1.2; }
+.image-content { flex: 1.5; text-align: center; }
+.maquette-3d { width: 100%; height: 450px; background-color: #ffffff; border-radius: 20px; border: 1px solid #eeeeee; outline: none; }
+.caption { font-size: 0.85em; color: #888; margin-top: 10px; font-style: italic; }
+
+.btn-download {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-download:hover { background-color: var(--accent-color); transform: scale(1.05); }
+
+/* --- INFO BOX (CLIC CARTES) --- */
+.info-box {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+footer { background-color: var(--secondary-color); color: #bdc3c7; text-align: center; padding: 40px; margin-top: 60px; font-size: 0.9em; }
+
+@media (max-width: 768px) {
+    .content-section { flex-direction: column; padding: 30px; }
+    header { flex-direction: column; text-align: center; }
+    nav ul { margin-top: 15px; }
+    .modal-content { width: 90%; }
+}

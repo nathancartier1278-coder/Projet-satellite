@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Satellite - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Système de mesure par satellite</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="details.html">Détails Techniques (IHM)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Surveillance des Ressources en Eau</h1>
+        <p>Mission : Connaître le cycle de l'eau et son évolution dans le temps.</p>
+    </section>
+
+    <main>
+        <div style="text-align: center; margin-top: 40px;">
+            <h2>Télémesure en Direct (Prototype)</h2>
+            <p style="color: #666;">Cliquez sur une carte pour plus de détails</p>
+        </div>
+
+        <section class="dashboard-container">
+            <div class="cards-wrapper">
+                <div class="data-card water" onclick="showInfo('water')">
+                    <div class="icon">📏</div>
+                    <h3>Hauteur d'eau</h3>
+                    <div class="value">1.00 m</div>
+                    <p class="status">Réf. Prototype</p>
+                </div>
+                <div class="data-card ice" onclick="showInfo('precision')">
+                    <div class="icon">🎯</div>
+                    <h3>Précision</h3>
+                    <div class="value">0.5 %</div>
+                    <p class="status">Seuil requis</p>
+                </div>
+                <div class="data-card heat" onclick="showInfo('temp')">
+                    <div class="icon">🌡️</div>
+                    <h3>Température</h3>
+                    <div class="value">Stable</div>
+                    <p class="status">Protection active</p>
+                </div>
+            </div>
+
+            <div id="info-display" class="info-box" style="display: none;">
+                <h4 id="info-title"></h4>
+                <p id="info-text"></p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Présentation du Projet</h2>
+                <p>L'eau douce se raréfie sous l'effet du changement climatique. Le système doit mesurer la hauteur des lacs et envoyer les informations au centre de mission[cite: 2].</p>
+                <div class="liens">
+                    <button onclick="openModal()" class="btn-download">📄 doc-technique</button>
+                </div>
+            </div>
+            <div class="image-content">
+                <model-viewer 
+                    src="satellite.glb.glb" 
+                    alt="Maquette 3D Satellite" 
+                    auto-rotate 
+                    camera-controls 
+                    exposure="0.6"
+                    class="maquette-3d">
+                </model-viewer>
+                <p class="caption">Modèle : Plate-forme et Charge utile</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="techModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: #0f3460; border-bottom: 2px solid #e94560; padding-bottom: 10px;">Dossier Technique (UAI: 0312093G)</h2>
+            <div class="modal-body">
+                
+                <section>
+                    <h3>1. Mission & Fonctions</h3>
+                    <p>Le système doit mesurer la hauteur des lacs en temps réel et sur la durée[cite: 2].</p>
+                    <ul>
+                        <li><strong>Programmation (Id 1.10) :</strong> L'opérateur programme des mesures à des dates définies[cite: 6].</li>
+                        <li><strong>Seuils d'alerte (Id 1.9.2) :</strong> Paramétrables à +3 cm et -5 cm par rapport au niveau de référence[cite: 7].</li>
+                        <li><strong>Sauvegarde (Id 21) :</strong> Archivage obligatoire des valeurs mesurées[cite: 9].</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>2. Caractéristiques Techniques</h3>
+                    <table style="width:100%; border-collapse: collapse; margin-top:10px; text-align: left;">
+                        <tr style="background:#f5f6fa;">
+                            <th style="padding:10px; border:1px solid #ddd;">Paramètre</th>
+                            <th style="padding:10px; border:1px solid #ddd;">Spécification</th>
+                        </tr>
+                        <tr><td style="padding:10px; border:1px solid #ddd;">Volume / Encombrement</td><td style="padding:10px; border:1px solid #ddd;">Max: 18x18x9 cm (Id 1.7.3) [cite: 15]</td></tr>
+                        <tr><td style="padding:10px; border:1px solid #ddd;">Masse (Id 1.7.2)</td><td style="padding:10px; border:1px solid #ddd;">Max 25% de la plateforme [cite: 15]</td></tr>
+                        <tr><td style="padding:10px; border:1px solid #ddd;">Tension (Id 1.7.1.1)</td><td style="padding:10px; border:1px solid #ddd;">7,4 V [cite: 16]</td></tr>
+                        <tr><td style="padding:10px; border:1px solid #ddd;">Raccordement (Id 9.1)</td><td style="padding:10px; border:1px solid #ddd;">Prise Jack femelle [cite: 16]</td></tr>
+                        <tr><td style="padding:10px; border:1px solid #ddd;">Fixation (Id 1.7.4)</td><td style="padding:10px; border:1px solid #ddd;">2 taraudages M6 existants [cite: 16]</td></tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h3>3. Environnement & Normes</h3>
+                    <ul>
+                        <li><strong>Résistance mécanique (Id 1.6.2) :</strong> Supporte les vibrations de décollage[cite: 19].</li>
+                        <li><strong>Résistance thermique (Id 1.6.3) :</strong> Tenue aux variations extrêmes de températures[cite: 20].</li>
+                        <li><strong>Éco-conception (Id 1.2) :</strong> Conformité à la norme NF EN 16524[cite: 21].</li>
+                        <li><strong>CEM (Id 1.3) :</strong> Respect des compatibilités électromagnétiques[cite: 20].</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>4. Spécifications de l'Interface (IHM)</h3>
+                    <ul>
+                        <li><strong>Affichage (Id 1.9.1) :</strong> Restitution ergonomique des mesures au centre de mission[cite: 8].</li>
+                        <li><strong>Téléopération :</strong> Interface de définition des seuils et des dates de mission[cite: 6, 7].</li>
+                        <li><strong>Analyse (Id 1.9) :</strong> Les mesures sont envoyées et analysées au centre de mission[cite: 5].</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>5. Performances de Mesure</h3>
+                    <ul>
+                        <li><strong>Précision (Id 1.7.2.1) :</strong> Précision exigée de +/- 0,5%[cite: 11].</li>
+                        <li><strong>Référence (Id 17) :</strong> Hauteur de 1 m entre le bas du satellite et l'eau pour le prototype[cite: 12].</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Réalisé par : Cartier Nathan, Louca Martinez, Mattheo Joulan, Charles Saint-Martin et Doryan Breugnot-ca</p>
+    </footer>
+
+    <script>
+        function showInfo(type) {
+            const display = document.getElementById('info-display');
+            const title = document.getElementById('info-title');
+            const text = document.getElementById('info-text');
+            display.style.display = "block";
+            if(type === 'water') {
+                title.innerText = "Mesure de Hauteur";
+                text.innerText = "La hauteur de référence entre la surface de l'eau et le bas du satellite est de 1m pour le prototype[cite: 12].";
+            } else if(type === 'precision') {
+                title.innerText = "Exigence de Précision";
+                text.innerText = "La précision des mesures devra être de +/- 0,5%[cite: 11].";
+            } else if(type === 'temp') {
+                title.innerText = "Protection Thermique";
+                text.innerText = "La charge utile devra résister aux variations de températures[cite: 20].";
+            }
+            display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function openModal() { document.getElementById("techModal").style.display = "block"; }
+        function closeModal() { document.getElementById("techModal").style.display = "none"; }
+        window.onclick = function(event) {
+            let modal = document.getElementById("techModal");
+            if (event.target == modal) { closeModal(); }
+        }
+    </script>
+</body>
+</html>
