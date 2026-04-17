@@ -5,7 +5,7 @@ import time
 # --- CONFIGURATION ---
 PORT_COM = 'COM3'  # Remplace par le port de ton Arduino Récepteur (ex: COM4, COM5...)
 VITESSE = 9600
-URL_SITE_WEB = "https://nathancartier1278-coder.github.io/Projet-satellite/" # L'adresse de ton site
+URL_SITE_WEB = "https://nathancartier1278-coder.github.io/Projet-satellite/"
 # ---------------------
 
 print("Démarrage de la passerelle...")
